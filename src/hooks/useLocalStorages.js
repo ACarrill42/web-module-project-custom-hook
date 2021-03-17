@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 //how to set up local storage.
 
-const useLocalStorage = (initialValue, key) => {
+const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : initialValue;
@@ -12,7 +12,7 @@ const useLocalStorage = (initialValue, key) => {
     window.localStorage.setItem(key, JSON.stringify(value));
   };
 
-  return [storedValue];
+  return [storedValue, setValue];
 };
 
 export default useLocalStorage
